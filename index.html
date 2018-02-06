@@ -20,13 +20,13 @@
    <div class="wrapper">
         <div class="sidebar" data-color="orange" data-image="../assets/img/sidebar-1.jpg">
             <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+            Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
+            Tip 2: you can also add an image using data-image tag
+            -->
             <div class="logo">
                 <a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="simple-text">
-                    <img src="assets/icons/zcl.png"/>&nbsp;ZClassic
+                    <img src="assets/icons/zcl.png"/>&nbsp;Zclassic
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -57,7 +57,7 @@
                         </a>
                     </li>
                 </ul>
-									<span id="alertSpan" class="alertSpan">Initializing, please wait...</span>
+							  <span id="alertSpan" class="alertSpan">Initializing, please wait...</span>
 
             </div>
         </div>
@@ -71,7 +71,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-						<a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="navbar-brand navbar-toggle" style="width:200px; float:left;">ZClassic Eleos Wallet</a>
+						<a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="navbar-brand navbar-toggle" style="width:200px; float:left;">Eleos - Zclassic Desktop Wallet</a>
                     </div>
 
                 </div>
@@ -221,94 +221,99 @@
   </body>
 
   <!-- Insert this line above script imports  -->
-<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-       <script src="assets/js/jquery-3.2.1.min.js"></script>
-	  <script type="text/javascript" src="assets/js/datatables.min.js"></script>
-	  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-	  <script type="text/javascript" src="assets/js/bootstrap-notify.min.js"></script>
-	  <script type="text/javascript" src="assets/js/perfect-scrollbar.jquery.min.js"></script>
-	  <script text="text/javascript" src="assets/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Insert this line after script imports -->
-<script>if (window.module) module = window.module;</script>
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+  <script src="assets/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="assets/js/datatables.min.js"></script>
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="assets/js/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+  <script text="text/javascript" src="assets/js/material-dashboard.js?v=1.2.0"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+
   <script>
   
 	function launchZclassicOrg() {
 		var shell = require('electron').shell;
 		event.preventDefault();
-		shell.openExternal('http://zclassic.org/');
-    }
+		shell.openExternal('https://zclassic.org/');
+  }
 	
 	function openPage(pageName) {
 		renderer.openPage(pageName);
-      }
+  }
 
 	const renderer = require('./renderer.js')
 	  
-      function setActiveNav(element) {
-          for (let i = 0; i < document.getElementsByClassName('navLink').length; i++) {
-              document.getElementsByClassName('navLink')[i].parentNode.className = '';
-          }
-          element.parentNode.className += ' active';
+  function setActiveNav(element) {
+      for (let i = 0; i < document.getElementsByClassName('navLink').length; i++) {
+          document.getElementsByClassName('navLink')[i].parentNode.className = '';
       }
-      /* // TODO: add emoji support
-       function stringToHex(s)
-       {
-       let hex = '';
-       let append = '';
-       for (let i = 0; i < s.length; i++) {
-       let cp = s.codePointAt(i).toString(16);
-       append = '';
-       if (cp.length / 6 !== 1) {
-       for (let n = 0; n < (6 - cp.length); n++) {
-       append += '0';
-       }
-       cp = append + cp;
-       }
-       hex += cp;
-       console.log(hex);
-       }
-       return(hex);
-       }
-       */
-      function stringToHex(s) {
-          let hex = '';
-          let append = '';
-          for (let i = 0; i < s.length; i++) {
-              let cp = s.codePointAt(i).toString(16);
-              append = '';
-              if (cp.length / 2 !== 1) {
-                  for (let n = 0; n < (2 - cp.length); n++) {
-                      append += '0';
-                  }
-                  cp = append + cp;
+      element.parentNode.className += ' active';
+  }
+  /* // TODO: add emoji support
+   function stringToHex(s)
+   {
+   let hex = '';
+   let append = '';
+   for (let i = 0; i < s.length; i++) {
+   let cp = s.codePointAt(i).toString(16);
+   append = '';
+   if (cp.length / 6 !== 1) {
+   for (let n = 0; n < (6 - cp.length); n++) {
+   append += '0';
+   }
+   cp = append + cp;
+   }
+   hex += cp;
+   console.log(hex);
+   }
+   return(hex);
+   }
+   */
+  function stringToHex(s) {
+      let hex = '';
+      let append = '';
+      for (let i = 0; i < s.length; i++) {
+          let cp = s.codePointAt(i).toString(16);
+          append = '';
+          if (cp.length / 2 !== 1) {
+              for (let n = 0; n < (2 - cp.length); n++) {
+                  append += '0';
               }
-              hex += cp;
+              cp = append + cp;
           }
-          return (hex);
+          hex += cp;
       }
-      /* Unused
-      function hexToString(s) {
-          let str = '';
-          for (let i = 0; i < s.length; i++) {
-              let charCode = parseInt(s[(i * 2)] + s[(i * 2) + 1], 16);
-              str += String.fromCharCode(charCode);
-          }
-          return str;
+      return (hex);
+  }
+
+  /* Unused
+  function hexToString(s) {
+      let str = '';
+      for (let i = 0; i < s.length; i++) {
+          let charCode = parseInt(s[(i * 2)] + s[(i * 2) + 1], 16);
+          str += String.fromCharCode(charCode);
       }
-      */
-      function transparentReset() {
-          document.getElementById("privateFromSelect").value = "";
-          document.getElementById("transparentSendToValue").value = "";
-          document.getElementById("transparentAmountValue").value = "";
-      }
-      function privateReset() {
-          document.getElementById("privateFromSelect").value = "";
-          document.getElementById("privateSendToValue").value = "";
-          document.getElementById("privateAmountValue").value = "";
-          document.getElementById("privateMemoValue").value = "";
-      }
+      return str;
+  }
+  */
+
+  function transparentReset() {
+      document.getElementById("privateFromSelect").value = "";
+      document.getElementById("transparentSendToValue").value = "";
+      document.getElementById("transparentAmountValue").value = "";
+  }
+  function privateReset() {
+      document.getElementById("privateFromSelect").value = "";
+      document.getElementById("privateSendToValue").value = "";
+      document.getElementById("privateAmountValue").value = "";
+      document.getElementById("privateMemoValue").value = "";
+  }
 	  
-	  function copyAddress(address){
+  function copyAddress(address){
 	  var addressType = "transparent";
 	  var aux = document.createElement("input");
 		aux.setAttribute("value", address);
@@ -322,15 +327,13 @@
 		}
 		
 		$.notify({
-	message: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> Your " + addressType + " address has been copied to clipboard:<br/><span style='100px; word-wrap:break-word;'><b>" + address + "</span></b>"
-	},{
-	allow_dismiss: false,
-	type: 'warning',
-	delay:5000
-});
-	
-	
-	  }
+      message: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> Your " + addressType + " address has been copied to clipboard:<br/><span style='100px; word-wrap:break-word;'><b>" + address + "</span></b>"
+      },{
+      allow_dismiss: false,
+      type: 'warning',
+      delay:5000
+    });
+	}
 	  
 	function importPrivateKey(){
 	var smalltalk = require("smalltalk");
@@ -515,7 +518,7 @@ $.notify({
 			}); 
 			  } else {
 			  				$.notify({
-	message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Successfully transmitted transaction.<br/>TXID: " + arg.result
+	message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent..<br/>TXID: " + arg.result
 	},{
 		allow_dismiss: false,
 	type: 'warning'
@@ -535,7 +538,7 @@ $.notify({
 }); 
 			  } else {
 			  $.notify({
-	message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Successfully transmitted transaction.<br/>TXID: " + arg.result
+	message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent.<br/>TXID: " + arg.result
 	},{
 		allow_dismiss: false,
 	type: 'warning'

@@ -1,15 +1,16 @@
 {
   "name": "eleos-for-zclassic",
-  "productName": "Eleos for ZClassic",
-  "description": "A minimal Equihash wallet",
-  "version": "1.0.0",
+  "productName": "Eleos for Zclassic",
+  "description": "Full-node wallet for Zcash forks",
+  "version": "1.0.1",
   "main": "main.js",
   "keywords": [
+    "zcash",
     "zclassic",
     "equihash",
     "wallet"
   ],
-  "author": "ZClassic Development Team",
+  "author": "The Zclassic Team",
   "license": "CPAL-1.0",
   "devDependencies": {
     "electron": "^1.7.8",
@@ -24,8 +25,8 @@
   },
   "scripts": {
     "start": "electron .",
-    "package-win": "electron-packager . ZClassic-Eleos-Wallet --overwrite --platform=win32 --arch=x64 --icon=assets/icons/zcl.ico --prune=true --out=release-builds --version-string.CompanyName=Otis --version-string.FileDescription=\"ZClassic Eleos Wallet\" --version-string.ProductName=\"ZClassic Eleos Wallet\"",
-    "package-mac": "electron-packager ./ ZClassic --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . Zclassic-Eleos-Wallet --overwrite --platform=win32 --arch=x64 --icon=assets/icons/zcl.ico --prune=true --out=release-builds --version-string.CompanyName=Zclassic--version-string.FileDescription=\"Zclassic Eleos Wallet\" --version-string.ProductName=\"Zclassic Eleos Wallet\"",
+    "package-mac": "electron-packager ./ Zclassic --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
     "create-installer-mac": "electron-installer-dmg ./release-builds/zclassic-darwin-x64/zclassic.app zclassic --out=release-builds --overwrite",
     "create-installer-win": "node createinstaller.js"
   },

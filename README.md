@@ -26,11 +26,11 @@ cd ~/Builds/eleos
 ```
 npm install 
 ```
-Copy the Zclassic/Zcash wallet daemon into the elos directory (name the binary zcld-linux)
+Copy the Zclassic/Zcash wallet daemon into the Eleos directory (name the binary 'zcld-linux')
 ```
 cp ~/Builds/zclassic/src/zcashd ~/Builds/eleos/zcld-linux
 ```
-Start eleos
+Start Eleos
 ```
 npm start
 ```
@@ -38,7 +38,7 @@ npm start
 
 ### Supported Wallets
 
-Eleos is primarily designed for Zcash-based cryptocurrencies. The wallet.dat for each cryptocurrency is stored in the directories below.
+Eleos is designed as to be a full-node wallet for all Zcash forks. The wallet.dat for each cryptocurrency is stored in the directories below.
 
 | Support | Status | Windows Location | MacOS Location |
 | ------ | ------ | ------ | ------ |
@@ -51,5 +51,8 @@ ZCL : t1SHPhCr6TScktD9Ndm16VEjYJsMoR2DUBv
 
 ### License
 Common Public Attribution License (CPAL-1.0)
-Created by Josh Yabut for ZenCash
-Modified and maintained by Michael Otis of ZClassic/Bitcoin Private Development Team
+Originally Created by Josh Yabut for ZenCash
+Reworked by Michael Otis for Zclassic/Bitcoin Private
+
+Maintained by The Zclassic Team
+
