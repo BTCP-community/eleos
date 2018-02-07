@@ -41,7 +41,6 @@ npm start
 
 
 ### Supported Coins
-
 Eleos is designed as to be a full-node wallet for all Zcash forks. The wallet.dat for each cryptocurrency is stored in the directories below.
 
 | Support | Status | Windows Location | MacOS Location |
@@ -57,6 +56,26 @@ ZCL (T): t1SHPhCr6TScktD9Ndm16VEjYJsMoR2DUBv
 (Send us a memo at our Z address! :wink:)
 
 BTC: 12AizDy1LTEd9DytvZbV3tPf5eVb5Sgt1k
+
+### Building Releases
+For Windows, you must have WINE installed.
+
+```
+npm install
+```
+```
+npm run package-win
+```
+```
+npm run create-installer-win
+```
+or
+```
+npm run package-mac
+```
+```
+npm run create-installer-mac
+```
 
 ### License
 Common Public Attribution License (CPAL-1.0)  
