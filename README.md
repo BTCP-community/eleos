@@ -3,7 +3,8 @@
 Eleos is a wallet for zero-knowledge cryptocurrencies written in Electron (JS).
 
   - Compatible with Windows, MacOS, and Linux
-  - Supports Z -> Z, Z -> T, T -> Z, and T -> T transactions
+  - Supports Z > Z, Z > T, T > Z, and T > T transactions
+  - Supports encrypted memos
   - No Java dependencies required, unlike the Swing client
   - This version only currently supports Zclassic
 
@@ -39,7 +40,7 @@ npm start
 ```
 
 
-### Supported Wallets
+### Supported Coins
 
 Eleos is designed as to be a full-node wallet for all Zcash forks. The wallet.dat for each cryptocurrency is stored in the directories below.
 
@@ -50,15 +51,16 @@ Eleos is designed as to be a full-node wallet for all Zcash forks. The wallet.da
 
 ### Donations
 For all donations to the Zclassic team:
-ZCL (Z): zcfocnwd5EuQb5SkECzyKqaWAizXA9pfBqd6i9BRXcUYXFxCTRcrkU7Sc9nfFs3Te1FneGEkiSsL1mWtFW4dDH9mnpC2nSt
-ZCL (T): t1SHPhCr6TScktD9Ndm16VEjYJsMoR2DUBv
+
+ZCL (Z): zcfocnwd5EuQb5SkECzyKqaWAizXA9pfBqd6i9BRXcUYXFxCTRcrkU7Sc9nfFs3Te1FneGEkiSsL1mWtFW4dDH9mnpC2nSt  
+ZCL (T): t1SHPhCr6TScktD9Ndm16VEjYJsMoR2DUBv  
 (Send us a memo at our Z address! :wink:)
 
 BTC: 12AizDy1LTEd9DytvZbV3tPf5eVb5Sgt1k
 
 ### License
-Common Public Attribution License (CPAL-1.0)
-Originally Created by Josh Yabut for ZenCash
+Common Public Attribution License (CPAL-1.0)  
+Originally Created by Josh Yabut for ZenCash  
 Reworked by Michael Otis for Zclassic/Bitcoin Private
 
 Maintained by The Zclassic Team
