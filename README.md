@@ -1,36 +1,39 @@
 # Eleos
 
-Eleos is a wallet for zero-knowledge cryptocurrencies written in Electron. 
+Eleos is a wallet for zero-knowledge cryptocurrencies written in Electron (JS).
 
   - Compatible with Windows, MacOS, and Linux
-  - No Third-Party Java Dependencies Required
-  - Supports Zclassic
+  - Supports Z -> Z, Z -> T, T -> Z, and T -> T transactions
+  - No Java dependencies required, unlike the Swing client
+  - This version only currently supports Zclassic
 
 ![Screenshot](https://i.imgur.com/hyvrCpX.jpg)
 
-### First Time Run
-Note: First time run it may take awhile to load since ~1GB of cryptographic data must be downloaded first.
+### Please be patient on first run!
+The program may take a while to load, since ~1GB of cryptographic data must be downloaded first.
 
 ##### Windows and MacOS
-The simplest way to get started on Windows or Mac OS is to [download and run the latest standlone application](https://github.com/michaelotis/eleos/releases). No need for installation!
+The simplest way to get started on Windows or Mac OS is to [download and run the latest standalone application](https://github.com/BTCP-community/eleos/releases). No need for installation!
 
 ##### Linux
-Note: Eleos requires that the compiled wallets are named zcld-linux and are saved into the eleos directory.
-You can compile yourself or get the file here : https://github.com/michaelotis/eleos/releases/tag/1.0
+Note: Eleos requires that zcashd from your coin be renamed to zcld-linux, and copied into the main eleos directory.
+You can compile it yourself or get the file here: https://github.com/BTCP-community/eleos/releases
 
-Get the source
+Get the source:
 ```
-git clone https://github.com/michaelotis/eleos.git eleos
+git clone https://github.com/BTCP-community/eleos.git
 ```
-cd ~/Builds/eleos
 ```
-npm install 
+cd eleos
 ```
-Copy the Zclassic/Zcash wallet daemon into the Eleos directory (name the binary 'zcld-linux')
 ```
-cp ~/Builds/zclassic/src/zcashd ~/Builds/eleos/zcld-linux
+npm install
 ```
-Start Eleos
+Copy the Zclassic/Zcash wallet daemon into the Eleos directory (name the binary 'zcld-linux'):
+```
+cp ~/Z/zclassic/src/zcashd ~/Z/eleos/zcld-linux
+```
+Start Eleos:
 ```
 npm start
 ```
@@ -45,9 +48,13 @@ Eleos is designed as to be a full-node wallet for all Zcash forks. The wallet.da
 | Zclassic | Fully supported | %APPDATA%/Zclassic | ~/Library/Application Support/Zclassic |
 
 
-### Donation
-If you consider to make a donation, here are our addresses :
-ZCL : t1SHPhCr6TScktD9Ndm16VEjYJsMoR2DUBv
+### Donations
+For all donations to the Zclassic team:
+ZCL (Z): zcfocnwd5EuQb5SkECzyKqaWAizXA9pfBqd6i9BRXcUYXFxCTRcrkU7Sc9nfFs3Te1FneGEkiSsL1mWtFW4dDH9mnpC2nSt
+ZCL (T): t1SHPhCr6TScktD9Ndm16VEjYJsMoR2DUBv
+(Send us a memo at our Z address! :wink:)
+
+BTC: 12AizDy1LTEd9DytvZbV3tPf5eVb5Sgt1k
 
 ### License
 Common Public Attribution License (CPAL-1.0)
@@ -55,4 +62,3 @@ Originally Created by Josh Yabut for ZenCash
 Reworked by Michael Otis for Zclassic/Bitcoin Private
 
 Maintained by The Zclassic Team
-
