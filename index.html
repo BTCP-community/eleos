@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Eleos for Zclassic - Equihash Wallet and Messaging</title>
+	<title>Eleos for Zclassic - Wallet and Messaging</title>
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!-- Bootstrap core CSS -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
 			Tip 2: you can also add an image using data-image tag
 		-->
 		<div class="logo">
-			<a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="simple-text">
+			<a href="https://zclassic.org/" onclick="launchZclassicOrg()" class="simple-text">
 				<img src="assets/icons/zcl.png"/>&nbsp;Zclassic
 			</a>
 		</div>
@@ -165,10 +165,10 @@
 								<div class="inner">
 									<form>
 										<div class="form-group">
-											<label for="privateFromField">From</label><select class="form-control" id="privateFromSelect" title="privateFromSelect"></select>
-											<label for="privateSendToField">Send To</label><input class="form-control" type="text" id="privateSendToValue" title="privateSendToValue"/>
-											<label for="privateAmountField">Amount <span>(Fee 0.0001)</span></label><input class="form-control" step="1" type="number" id="privateAmountValue" title="privateAmountValue"/>
-											<label for="privateMemoField">Encrypted Memo <span>(optional)</span></label><input class="form-control" type="text" id="privateMemoValue" title="privateMemoValue"/>
+											<label for="privateFromField">From</label><select class="form-control" id="privateFromSelect" title="Address to Send From"></select>
+											<label for="privateSendToField">Send To</label><input class="form-control" type="text" id="privateSendToValue" title="Destination Address"/>
+											<label for="privateAmountField">Amount <span>(Fee 0.0001)</span></label><input class="form-control" step="1" type="number" id="privateAmountValue" title="Amount of ZCL to Send"/>
+											<label for="privateMemoField">Encrypted Memo <span>(optional)</span></label><input class="form-control" type="text" id="privateMemoValue" title="Memo to Send with your Shielded Transaction"/>
 										</div>
 										<div class="form-group">
 											<button type="button" class="btn btn-primary btn-sm" id="privateSendButton" onclick="sendPrivateTransaction()">Send</button>

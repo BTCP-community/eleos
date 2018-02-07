@@ -1,7 +1,7 @@
 {
   "name": "eleos-for-zclassic",
   "productName": "Eleos for Zclassic",
-  "description": "Full-node wallet for Zcash forks",
+  "description": "Full-node wallet and messaging for Zcash forks",
   "version": "1.0.1",
   "main": "main.js",
   "keywords": [
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/michaelotis/eleos.git"
+    "url": "https://github.com/BTCP-Community/eleos.git"
   },
   "scripts": {
     "start": "electron .",
