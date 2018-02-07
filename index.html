@@ -91,7 +91,7 @@
 							<div class="card-footer">
 								<div class="stats">
 									<p><i class="fa fa-unlock-alt text-danger"></i> &nbsp;Transparent: <span id="transparentBalanceValue">0</span> <span class="coin">ZCL</span></p>
-                  <p><i class="fa fa-shield text-danger"></i> &nbsp;Private: <span id="privateBalanceValue">0</span> <span class="coin">ZCL</span></p>
+                  <p><i class="fa fa-shield text-danger"></i> &nbsp;Shielded: <span id="privateBalanceValue">0</span> <span class="coin">ZCL</span></p>
 
 								</div>
 							</div>
@@ -184,7 +184,7 @@
 										<div class="col-md-12">
 											<div class="card">
 												<div class="card-header" data-background-color="orange">
-													<h4 class="title">Transparent Addresses</h4>
+													<h4 class="title">T Addresses - Transparent Balance</h4>
 												</div>
 												<div class="card-content table-responsive">
 													<div id="addressTransparentSpan" style="text-align:left"></div>
@@ -196,7 +196,7 @@
 										<div class="row">
 											<div class="card">
 												<div class="card-header" data-background-color="orange">
-													<h4 class="title">Private Addresses</h4>
+													<h4 class="title">Z Addresses - Shielded Balance</h4>
 												</div>
 												<div class="card-content table-responsive">
 													<div id="addressPrivateSpan" style="text-align:left"></div>
@@ -326,7 +326,7 @@ function copyAddress(address){
 	}
 
 	$.notify({
-		message: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> Your " + addressType + " address has been copied to clipboard:<br/><span style='100px; word-wrap:break-word;'><b>" + address + "</span></b>"
+		message: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> Your " + addressType + " address has been copied to the clipboard:<br/><span style='100px; word-wrap:break-word;'><b>" + address + "</span></b>"
 	},{
 		allow_dismiss: false,
 		type: 'warning',
@@ -395,7 +395,7 @@ function getNewTransparentAddress() {
 	document.execCommand("copy");
 	document.body.removeChild(aux);
 	$.notify({
-		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Address Created and Copied To Clipboard</strong>",
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>New T Address and Key Generated! Copied To Clipboard.</strong>",
 		message: newTransparentAddress
 	},{
 		allow_dismiss: false,
@@ -412,7 +412,7 @@ function getNewPrivateAddress() {
 	document.execCommand("copy");
 	document.body.removeChild(aux);
 	$.notify({
-		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Address Created and Copied To Clipboard</strong>",
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>New Z Address and Key Generated! Copied To Clipboard.</strong>",
 		message: newPrivateAddress
 	},{
 		allow_dismiss: false,
@@ -430,7 +430,7 @@ function copyPrivKey(address){
 	document.execCommand("copy");
 	document.body.removeChild(aux);
 	$.notify({
-		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard</strong>",
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard.</strong>",
 		message: pKey.result
 	},{
 		allow_dismiss: false,
@@ -448,7 +448,7 @@ function copyZPrivKey(address){
 	document.execCommand("copy");
 	document.body.removeChild(aux);
 	$.notify({
-		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard</strong>",
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard.</strong>",
 		message: pKey.result
 	},{
 		allow_dismiss: false,
@@ -517,7 +517,7 @@ function sendPrivateTransaction() {
 			});
 		} else {
 			$.notify({
-				message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent..<br/>TXID: " + arg.result
+				message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent.<br/>TXID: " + arg.result
 			},{
 				allow_dismiss: false,
 				type: 'warning'

@@ -23,7 +23,7 @@ function openPage(pageName) {
               setActiveNav(document.getElementById("dashboardTab"));
           }
       }
-	
+
 function hexToString(s) {
     let str = "";
     for (let i = 0; i < s.length; i++) {
@@ -55,7 +55,7 @@ function format (txid) {
         blockhash: res.result.blockhash,
         txid: res.result.txid
     };
-	
+
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="width:100%; text-align:left;">'+
         '<tr><th>Transaction ID <a href="#" target="_blank" onclick="openTX(\''+obj.txid+'\'); return false;"> (View TX)</a></th></tr>' +
@@ -73,7 +73,7 @@ function generateMemoTable(memos) {
         }
         return b.time - a.time;
     });
-	
+
 		var findMemoTable = $("#memoTable");
 
 	if(!findMemoTable[0]){
@@ -81,18 +81,18 @@ function generateMemoTable(memos) {
 	var tableHead = table.createTHead();
 	var th = tableHead.insertRow(-1);
 
-	
+
 		let heading = new Array();
 		heading[0] = ""
 		heading[1] = "Amount";
 	heading[2] = "Address";
 	heading[3] = "Memo";
 	heading[4] = "Time";
-	
+
 		let tableBody = table.createTBody();
 
 	  // Insert cells into the header row.
-	
+
   for (let i=0; i<heading.length; i++)
 	{
 		let thCell = th.insertCell(-1);
@@ -100,7 +100,7 @@ function generateMemoTable(memos) {
 		thCell.style.fontWeight = "bold";
 		thCell.innerHTML = heading[i];
 	}
-	
+
     for (let i = 0; i < localMemos.length; i++) {
 					if(localMemos[i].amount == ""){
 						continue;
@@ -113,8 +113,8 @@ function generateMemoTable(memos) {
 							let td = tr.insertCell(-1);
 							if(heading[x] != ""){
 								getProp = heading[x].toLowerCase();
-							} 
-							
+							}
+
 							if(heading[x] != "Time" && heading[x] != ""){
 							td.innerHTML = localMemos[i][getProp];
 							}  else if(heading[x] ==  "Time") {
@@ -135,7 +135,7 @@ function generateMemoTable(memos) {
 			table.width = "100%";
 
 	  document.getElementById("memoPageinner").innerHTML = table.outerHTML;
-	  
+
 	  $(document).ready(function() {
     $('#memoTable').DataTable( {
         "pageLength": 5,
@@ -144,14 +144,14 @@ function generateMemoTable(memos) {
 		"ordering": false
     } );
 	} );
-	
+
 	    // Add event listener for opening and closing details
 		$(document).ready(function () {
     $('#memoTable tbody').on('click', 'td.details-control', function () {
 		var getTable = $('#memoTable').DataTable();
         var tr = $(this).closest('tr');
         var row = getTable.row(tr);
- 
+
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
@@ -165,27 +165,27 @@ function generateMemoTable(memos) {
     } );
 		});
 	} else {
-		
 
-			
 
-		
-		
+
+
+
+
 	}
 }
 
 
 
 function generateHistoryTable(txs, privTxs, override) {
-	
+
 	var findTransactionTable = $("#transactionsTable");
-	
+
 	if(!findTransactionTable[0] || override == true){
     var table = document.createElement('table');
 	var tableHead = table.createTHead();
 	var th = tableHead.insertRow(-1);
 
-	
+
 		let heading = new Array();
 		heading[0] = "";
 	heading[1] = "Category";
@@ -193,9 +193,9 @@ function generateHistoryTable(txs, privTxs, override) {
 	heading[3] = "Address";
 	heading[4] = "Confirmations";
 	heading[5] = "Time";
-	
+
 	  // Insert cells into the header row.
-	
+
   for (let i=0; i<heading.length; i++)
 	{
 		let thCell = th.insertCell(-1);
@@ -205,7 +205,7 @@ function generateHistoryTable(txs, privTxs, override) {
 	}
 
 	let tableBody = table.createTBody();
-	
+
     let combinedTxs = [].concat(txs, privTxs);
 	var totalTxs = combinedTxs.length - 1;
 	if(totalTxs > 0){
@@ -231,7 +231,7 @@ function generateHistoryTable(txs, privTxs, override) {
                 time: combinedTxs[i].time
             });
         } else {
-			
+
 					var tr = tableBody.insertRow(-1);
 					tr.id = combinedTxs[i].txid;
 				for(let x = 0; x < heading.length; x++){
@@ -239,7 +239,7 @@ function generateHistoryTable(txs, privTxs, override) {
 							let getProp = heading[x].toLowerCase();
 							if(heading[x] != "Time" && heading[x] != ""){
 								if(getProp == "address" && !combinedTxs[i][getProp]){
-									td.innerHTML = "Private Address";
+									td.innerHTML = "Z Addresses";
 								} else {
 							td.innerHTML = combinedTxs[i][getProp];
 								}
@@ -270,7 +270,7 @@ function generateHistoryTable(txs, privTxs, override) {
 			table.width = "100%";
 
 	  document.getElementById("transactionTransparentSpan").innerHTML = table.outerHTML;
-	  
+
 	  $(document).ready(function() {
     $('#transactionsTable').DataTable( {
         "pageLength": 5,
@@ -279,18 +279,18 @@ function generateHistoryTable(txs, privTxs, override) {
 		"ordering": false
     } );
 	} );
-	
+
 	    // Add event listener for opening and closing details
 		$(document).ready(function () {
 
     $('#transactionsTable tbody').on('click', 'td.details-control', function () {
 		if ( $.fn.dataTable.isDataTable( '#transactionsTable' ) ) {
 			var getTable = $("#transactionsTable").DataTable();
-		
-		
+
+
         var tr = $(this).closest('tr');
         var row = getTable.row(tr);
- 
+
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
@@ -303,7 +303,7 @@ function generateHistoryTable(txs, privTxs, override) {
         }
 		}
     } );
-		});	  
+		});
 
 } else {
 
@@ -318,7 +318,7 @@ function generateHistoryTable(txs, privTxs, override) {
 					generateHistoryTable(txs, privTxs, true);
 				}
 			}
-	
+
 }
 }
 
@@ -335,7 +335,7 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
 		once = true;
 		}
     }
-	
+
 		    if (arg.id === "getinfo" && arg.result) {
         document.getElementById("syncBlockHeight").innerHTML = arg.result.blocks;
     }
@@ -345,12 +345,12 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
     }
     else if (arg.id === "getblockchaininfo" && arg.result) {
         let status = ((arg.result.blocks / arg.result.headers) * 100).toFixed(1);
-		
+
 		if(isNaN(status))
 			status = 0;
-		
+
 		document.getElementById("syncStatusValue").innerHTML = status + "%";
-		
+
         if (status < 25) {
             document.getElementById("syncStatusLabel").style.color = "red";
         } else if (status > 25 && status < 75){
@@ -387,8 +387,8 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
     else if (arg.id === "listreceivedbyaddress" && arg.result) {
         let table = [];
         let ctr = 0;
-			
-			
+
+
 			for(var x = 0; x < arg.result.length; x++){
 				var total = 0;
 				var getUnspent =  generateQuerySync("listunspent", [0, 9999999, [arg.result[x].address]]);
@@ -396,16 +396,16 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
 					total = total + getUnspent.result[i].amount
 				}
 				arg.result[x].amount = total;
-		
+
 			}
-		
+
 		var byAmount = arg.result.slice(0);
 			byAmount.sort(function(a,b) {
 			return b.amount - a.amount;
 			});
-		
+
         for (let i = 0; i < byAmount.length; i++) {
-                table[ctr] = {'Transparent Address <a href="#" data-toggle="tooltip" data-placement="top" title="New Transparent Address" onclick="getNewTransparentAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': byAmount[i].address, '<p class="text-center">Amount</p>': '<p class="text-center">' + byAmount[i].amount + '</p>','<p class="text-center">Actions</p>':'<div class="text-center"><a href="#" title="Copy Address To Clipboard" onclick="copyAddress(\'' + byAmount[i].address + '\')"><i class="fa fa-clipboard" style="color:#c87035"></i></a>&nbsp;&nbsp;<a href="#" title="Export Private Key" onclick="copyPrivKey(\'' + byAmount[i].address + '\')"><i class="fa fa-download" style="color:#c87035"></i></span>' }
+                table[ctr] = {'T Addresses <a href="#" data-toggle="tooltip" data-placement="top" title="New Transparent Address" onclick="getNewTransparentAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': byAmount[i].address, '<p class="text-center">Amount</p>': '<p class="text-center">' + byAmount[i].amount + '</p>','<p class="text-center">Actions</p>':'<div class="text-center"><a href="#" title="Copy Address To Clipboard" onclick="copyAddress(\'' + byAmount[i].address + '\')"><i class="fa fa-clipboard" style="color:#c87035"></i></a>&nbsp;&nbsp;<a href="#" title="Export Private Key" onclick="copyPrivKey(\'' + byAmount[i].address + '\')"><i class="fa fa-download" style="color:#c87035"></i></span>' }
                 ctr += 1;
                 let option = document.createElement("option");
                 option.text = byAmount[i].address + " (" + byAmount[i].amount + ")";
@@ -429,7 +429,7 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
         }
         // build empty table if no results
         if (arg.result.length < 1) {
-            table[0] = {'Transparent Address <a href="#" data-toggle="tooltip" data-placement="top" title="New Transparent Address" onclick="getNewTransparentAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': "No addresses with received balances found", "amount": 0};
+            table[0] = {'T Addresses <a href="#" data-toggle="tooltip" data-placement="top" title="New Transparent Address" onclick="getNewTransparentAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': "No T addresses with non-zero balances found", "amount": 0};
         }
         let tableElement = tableify(table);
         let div = document.createElement("div");
@@ -442,15 +442,15 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
     else if (arg.id === "z_listaddresses" && arg.result) {
         let table = [];
         let ctr = 0;
-		
+
 				var byAmount = arg.result.slice(0);
 			byAmount.sort(function(a,b) {
 			return b.amount - a.amount;
 			});
-		
+
         for (let i = 0; i < byAmount.length; i++) {
             let res = generateQuerySync("z_getbalance", [byAmount[i], 0]);
-            table[ctr] = {'Private Address <a href="#" data-toggle="tooltip" data-placement="top" title="New Private Address" onclick="getNewPrivateAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': '<div class="truncate-ellipsis"><span>' + byAmount[i] + '</span></div>', '<p class="text-center">Amount</p>': '<p class="text-center">' + res.result + '</p>','<p class="text-center">Actions</p>':'<div class="text-center"><a href="#" title="Copy Address To Clipboard" onclick="copyAddress(\'' + byAmount[i] + '\')"><i class="fa fa-clipboard" style="color:#c87035"></i></a>&nbsp;&nbsp;<a href="#" title="Export Private Key" onclick="copyZPrivKey(\'' + byAmount[i] + '\')"><i class="fa fa-download" style="color:#c87035"></i></div>'};
+            table[ctr] = {'Z Address <a href="#" data-toggle="tooltip" data-placement="top" title="New Shielded (Z) Address" onclick="getNewPrivateAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': '<div class="truncate-ellipsis"><span>' + byAmount[i] + '</span></div>', '<p class="text-center">Amount</p>': '<p class="text-center">' + res.result + '</p>','<p class="text-center">Actions</p>':'<div class="text-center"><a href="#" title="Copy Address To Clipboard" onclick="copyAddress(\'' + byAmount[i] + '\')"><i class="fa fa-clipboard" style="color:#c87035"></i></a>&nbsp;&nbsp;<a href="#" title="Export Private Key" onclick="copyZPrivKey(\'' + byAmount[i] + '\')"><i class="fa fa-download" style="color:#c87035"></i></div>'};
             ctr += 1;
             if (res.result > 0) {
                 let option = document.createElement("option");
@@ -470,7 +470,7 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
         }
         // build empty table if no results
         if (byAmount.length < 1) {
-            table[0] = {'Private Address <a href="#" data-toggle="tooltip" data-placement="top" title="New Private Address" onclick="getNewPrivateAddress()"><i class="fa fa-plus-circle" style="color:green"></i></a>': "No addresses with received balances found", "<p class='text-center'>Amount</p>": '<p class="text-center">0</p>'};
+            table[0] = {'Z Addresses <a href="#" data-toggle="tooltip" data-placement="top" title="New Shielded (Z) Address" onclick="getNewPrivateAddress()"><i class="fa fa-plus-circle" style="color:green"></i></a>': "No Z addresses with non-zero balances found", "<p class='text-center'>Amount</p>": '<p class="text-center">0</p>'};
         }
         let tableElement = tableify(table);
         let div = document.createElement("div");
@@ -514,7 +514,7 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
             window.alert("There was an error:\n\n" + arg.error.message);
         }
         else {
-            window.alert("Successfully transmitted transaction.\n\nTXID: " + arg.result);
+            window.alert("Successfully sent transaction (transparent).\n\nTXID: " + arg.result);
         }
     }
     else if (arg.id === "z_sendmany") {
@@ -522,7 +522,7 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
             window.alert("There was an error:\n\n" + arg.error.message);
         }
         else {
-            window.alert("Successfully initiated private transaction.\n\nTXID: " + arg.result);
+            window.alert("Successfully sent transaction (shielded).\n\nTXID: " + arg.result);
         }
     }
 });
