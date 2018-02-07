@@ -271,10 +271,12 @@ function startWallet() {
         app.exit(1);
     }
     else {
+        /*
         if(initWalletCount === 10){
             dialog.showErrorBox("Wallet daemon can not be run.", "Check if daemon does not run already.");
             app.exit(1);
         }
+        */
         
 		if (!zcashd && (keyVerification.verifying === true && keyVerification.proving === true && configComplete === true)) {
             try {
