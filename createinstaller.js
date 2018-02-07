@@ -14,12 +14,12 @@ function getInstallerConfig () {
   const outPath = path.join(rootPath, 'release-builds')
 
   return Promise.resolve({
-    appDirectory: path.join(outPath, 'Zclassic-Eleos-Wallet-win32-x64/'),
-    authors: 'Michael Otis',
+    appDirectory: path.join(outPath, 'Eleos-win32-x64/'),
+    authors: 'The Zclassic Team',
     noMsi: true,
     outputDirectory: path.join(outPath, 'windows-installer'),
-    exe: 'Zclassic-Eleos-Wallet.exe',
-    setupExe: 'Zclassic-Eleos-Wallet.exe',
+    exe: 'Eleos.exe',
+    setupExe: 'Eleos.exe',
     setupIcon: path.join(rootPath, 'assets', 'icons', 'zcl.ico'),
     loadingGif: path.join(rootPath, 'assets', 'icons', 'zcl-loading.gif')
   })
