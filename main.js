@@ -20,6 +20,7 @@ const progress = require("request-progress");
 
 
 require('electron-context-menu')({
+  showInspectElement: false,
 	prepend: (params, browserWindow) => [{
 		label: 'Rainbow',
 		showInspectElement: false,
