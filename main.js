@@ -359,7 +359,7 @@ function createWindow() {
                         console.log("Version: " + pjs.version);
                         let message = ["Version: ",
                         pjs.version,
-                        "\nMade by The ZClassic Team",
+                        "\nMade by The Zclassic Team",
                         "\nDonation Addresses:",
                         "\nT: t1gsePJZ6ojJYygj3PWMGJfojPUoMd5AVfU",
                         "\nZ: zcfocnwd5EuQb5SkECzyKqaWAizXA9pfBqd6i9BRXcUYXFxCTRcrkU7Sc9nfFs3Te1FneGEkiSsL1mWtFW4dDH9mnpC2nSt",
