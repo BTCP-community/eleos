@@ -2,11 +2,11 @@ const createWindowsInstaller = require('electron-winstaller').createWindowsInsta
 const path = require('path')
 
 getInstallerConfig()
-  .then(createWindowsInstaller)
-  .catch((error) => {
-    console.error(error.message || error)
-    process.exit(1)
-  })
+.then(createWindowsInstaller)
+.catch((error) => {
+  console.error(error.message || error)
+  process.exit(1)
+})
 
 function getInstallerConfig () {
   console.log('Creating Windows Installer')
@@ -21,6 +21,6 @@ function getInstallerConfig () {
     exe: 'Zclassic-Eleos-Wallet.exe',
     setupExe: 'Zclassic-Eleos-Wallet.exe',
     setupIcon: path.join(rootPath, 'assets', 'icons', 'zcl.ico'),
-	loadingGif: path.join(rootPath, 'assets', 'icons', 'zcl-loading.gif')
+    loadingGif: path.join(rootPath, 'assets', 'icons', 'zcl-loading.gif')
   })
 }

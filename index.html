@@ -1,593 +1,591 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Eleos for Zclassic - Equihash Wallet and Messaging</title>
-		<link rel="stylesheet" href="assets/css/main.css" />
-		    <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <!--  Material Dashboard CSS    -->
-    <link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
-    <!--     Fonts and icons     -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css"/> 
+<head>
+	<meta charset="UTF-8">
+	<title>Eleos for Zclassic - Equihash Wallet and Messaging</title>
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<!--  Material Dashboard CSS -->
+	<link href="assets/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+	<!-- Fonts and icons -->
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="assets/css/datatables.min.css"/>
 	<link rel="stylesheet" href="node_modules/smalltalk/dist/smalltalk.min.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="sidebar" data-color="orange" data-image="../assets/img/sidebar-1.jpg">
+			<!--
+			Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
+			Tip 2: you can also add an image using data-image tag
+		-->
+		<div class="logo">
+			<a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="simple-text">
+				<img src="assets/icons/zcl.png"/>&nbsp;Zclassic
+			</a>
+		</div>
+		<div class="sidebar-wrapper">
+			<ul class="nav">
+				<li class="active">
+					<a class="navLink" id="dashboardTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('dashboardPage')">
+						<i class="material-icons">dashboard</i>
+						<p>Dashboard</p>
+					</a>
+				</li>
+				<li>
+					<a class="navLink" id="addressesTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('addressesPage')">
+						<i class="material-icons">location_on</i>
+						<p>Addresses</p>
+					</a>
+				</li>
+				<li>
+					<a class="navLink" id="sendPTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('sendPrivatePage')">
+						<i class="material-icons">compare_arrows</i>
+						<p>Send</p>
+					</a>
+				</li>
 
-	</head>
-	<body>
-   <div class="wrapper">
-        <div class="sidebar" data-color="orange" data-image="../assets/img/sidebar-1.jpg">
-            <!--
-            Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+				<li>
+					<a class="navLink" id="memoTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('memoPage')">
+						<i class="material-icons">content_paste</i>
+						<p>Memos</p>
+					</a>
+				</li>
+			</ul>
+			<span id="alertSpan" class="alertSpan">Initializing, please wait...</span>
 
-            Tip 2: you can also add an image using data-image tag
-            -->
-            <div class="logo">
-                <a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="simple-text">
-                    <img src="assets/icons/zcl.png"/>&nbsp;Zclassic
-                </a>
-            </div>
-            <div class="sidebar-wrapper">
-                <ul class="nav">
-                    <li class="active">
-                        <a class="navLink" id="dashboardTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('dashboardPage')">
-                            <i class="material-icons">dashboard</i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-					<li>
-                        <a class="navLink" id="addressesTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('addressesPage')">
-                            <i class="material-icons">location_on</i>
-                            <p>Addresses</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="navLink" id="sendPTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('sendPrivatePage')">
-                            <i class="material-icons">compare_arrows</i>
-                            <p>Send</p>
-                        </a>
-                    </li>
+		</div>
+	</div>
+	<div class="main-panel">
+		<nav class="navbar navbar-transparent navbar-absolute">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="navbar-brand navbar-toggle" style="width:200px; float:left;">Eleos - Zclassic Desktop Wallet</a>
+				</div>
 
-					                    <li>
-                        <a class="navLink" id="memoTab" href="javascript:void(0)" onclick="setActiveNav(this); openPage('memoPage')">
-                            <i class="material-icons">content_paste</i>
-                            <p>Memos</p>
-                        </a>
-                    </li>
-                </ul>
-							  <span id="alertSpan" class="alertSpan">Initializing, please wait...</span>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="card card-stats">
+							<div class="card-header" data-background-color="orange">
+								<i class="fa fa-tachometer"></i>
+							</div>
+							<div class="card-content">
+								<p class="category">Coin Balance</p>
+								<h3 class="title"><span id="currentBalanceValue">0</span>
+									<small><span class="coin">ZCL</span></small>
+								</h3>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<p><i class="fa fa-unlock-alt text-danger"></i> Transparent:<span id="transparentBalanceValue">0</span> <span class="coin">ZCL</span></p><p><i class="fa fa-shield text-danger"></i> Private:<span id="privateBalanceValue">0</span> <span class="coin">ZCL</span></p>
 
-            </div>
-        </div>
-        <div class="main-panel">
-            <nav class="navbar navbar-transparent navbar-absolute">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-						<a href="http://zclassic.org/" onclick="launchZclassicOrg()" class="navbar-brand navbar-toggle" style="width:200px; float:left;">Eleos - Zclassic Desktop Wallet</a>
-                    </div>
-
-                </div>
-            </nav>
-			            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="orange">
-                                    <i class="fa fa-tachometer"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Coin Balance</p>
-                                    <h3 class="title"><span id="currentBalanceValue">0</span> 
-                                        <small><span class="coin">ZCL</span></small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <p><i class="fa fa-unlock-alt text-danger"></i> Transparent:<span id="transparentBalanceValue">0</span> <span class="coin">ZCL</span></p><p><i class="fa fa-shield text-danger"></i> Private:<span id="privateBalanceValue">0</span> <span class="coin">ZCL</span></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="green">
-                                    <i class="fa fa-money"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Fiat Balance</p>
-                                    <h3 class="title" id="fiatBalance">$0</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <p><i class="material-icons">cloud</i> <a href="https://coinmarketcap.com/currencies/zclassic/" target="blank">CoinMarketCap.com</a></p>
-										<p><i class="material-icons">attach_money</i>USD Price: <span id="USDPrice">$0</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="red">
-                                    <i class="material-icons">cached</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Connections</p>
-                                    <h3 class="title" id="connectionsValue">0</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <p><i class="fa fa-bolt"></i> Sync Status: <span id="syncStatusLabel"><span id="syncStatusValue">0%</span></span></span></p>
-										<p><i class="fa fa-cube"></i> Block Height: <span id="syncBlockHeight">0</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-					<div class="row">
-						<div class="col-md-12">
-						<!-- Content Wrapper -->
-		<div id="wrapper">
-			<section id="dashboardPage" class="content-wrapper">
-				<div class="inner">
-				<div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Transactions</h4>
-                                </div>
-                                <div class="card-content table-responsive">
-					<div id="transactionTransparentSpan"></div>
-                    <div id="transactionPrivateSpan"></div>
+								</div>
+							</div>
+						</div>
 					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="card card-stats">
+							<div class="card-header" data-background-color="green">
+								<i class="fa fa-money"></i>
+							</div>
+							<div class="card-content">
+								<p class="category">Fiat Balance</p>
+								<h3 class="title" id="fiatBalance">$0</h3>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<p><i class="material-icons">cloud</i> <a href="https://coinmarketcap.com/currencies/zclassic/" target="blank">CoinMarketCap.com</a></p>
+									<p><i class="material-icons">attach_money</i>USD Price: <span id="USDPrice">$0</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="card card-stats">
+							<div class="card-header" data-background-color="red">
+								<i class="material-icons">cached</i>
+							</div>
+							<div class="card-content">
+								<p class="category">Connections</p>
+								<h3 class="title" id="connectionsValue">0</h3>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<p><i class="fa fa-bolt"></i> Sync Status: <span id="syncStatusLabel"><span id="syncStatusValue">0%</span></span></span></p>
+									<p><i class="fa fa-cube"></i> Block Height: <span id="syncBlockHeight">0</span></p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</section>
-			<section id="memoPage" class="content-wrapper">
-			<div class="inner">
-							<div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Memos</h4>
-                                </div>
-                                <div class="card-content table-responsive">
-					<div id="memoPageinner"></div>
-					</div>
-					</div>
-					</div>
-			</section>
-			<section id="sendPrivatePage" class="content-wrapper">
-				<div class="inner">
-					<form>
-                        <div class="form-group">
-                            <label for="privateFromField">From</label><select class="form-control" id="privateFromSelect" title="privateFromSelect"></select>
-                            <label for="privateSendToField">Send To</label><input class="form-control" type="text" id="privateSendToValue" title="privateSendToValue"/>
-                            <label for="privateAmountField">Amount <span>(Fee 0.0001)</span></label><input class="form-control" step="1" type="number" id="privateAmountValue" title="privateAmountValue"/>
-                            <label for="privateMemoField">Encrypted Memo <span>(optional)</span></label><input class="form-control" type="text" id="privateMemoValue" title="privateMemoValue"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-sm" id="privateSendButton" onclick="sendPrivateTransaction()">Send</button>
-                            <button type="button" class="btn btn-primary btn-sm" id="privateResetButton" onclick="privateReset()">Reset</button>
-                        </div>
-						
-                    </form>
-				</div>
-			</section>
-			<section id="addressesPage" class="content-wrapper">
-				<div class="inner">
 				<div class="row">
 					<div class="col-md-12">
-				<div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Transparent Addresses</h4>
-                                </div>
-                                <div class="card-content table-responsive">
-					<div id="addressTransparentSpan" style="text-align:left"></div>
-					</div>
-					</div>
-				</div>
-				</div>
-				<div class="col-md-12">
-				<div class="row">
-								<div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Private Addresses</h4>
-                                </div>
-                                <div class="card-content table-responsive">
-					<div id="addressPrivateSpan" style="text-align:left"></div>
-					</div>
-					</div>
-					</div>
-					</div>
-					<button type="button" class="btn btn-sm btn-primary" id="getPrivateKey" onclick="getPrivateKey()">Save All Private Keys To File</button>
-					<button type="button" class="btn btn-sm btn-primary" id="importPrivateKey" onclick="importPrivateKey()">Import Private Key</button>
+						<!-- Content Wrapper -->
+						<div id="wrapper">
+							<section id="dashboardPage" class="content-wrapper">
+								<div class="inner">
+									<div class="card">
+										<div class="card-header" data-background-color="orange">
+											<h4 class="title">Transactions</h4>
+										</div>
+										<div class="card-content table-responsive">
+											<div id="transactionTransparentSpan"></div>
+											<div id="transactionPrivateSpan"></div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section id="memoPage" class="content-wrapper">
+								<div class="inner">
+									<div class="card">
+										<div class="card-header" data-background-color="orange">
+											<h4 class="title">Memos</h4>
+										</div>
+										<div class="card-content table-responsive">
+											<div id="memoPageinner"></div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section id="sendPrivatePage" class="content-wrapper">
+								<div class="inner">
+									<form>
+										<div class="form-group">
+											<label for="privateFromField">From</label><select class="form-control" id="privateFromSelect" title="privateFromSelect"></select>
+											<label for="privateSendToField">Send To</label><input class="form-control" type="text" id="privateSendToValue" title="privateSendToValue"/>
+											<label for="privateAmountField">Amount <span>(Fee 0.0001)</span></label><input class="form-control" step="1" type="number" id="privateAmountValue" title="privateAmountValue"/>
+											<label for="privateMemoField">Encrypted Memo <span>(optional)</span></label><input class="form-control" type="text" id="privateMemoValue" title="privateMemoValue"/>
+										</div>
+										<div class="form-group">
+											<button type="button" class="btn btn-primary btn-sm" id="privateSendButton" onclick="sendPrivateTransaction()">Send</button>
+											<button type="button" class="btn btn-primary btn-sm" id="privateResetButton" onclick="privateReset()">Reset</button>
+										</div>
 
-</div>
-			</section>
+									</form>
+								</div>
+							</section>
+							<section id="addressesPage" class="content-wrapper">
+								<div class="inner">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="card">
+												<div class="card-header" data-background-color="orange">
+													<h4 class="title">Transparent Addresses</h4>
+												</div>
+												<div class="card-content table-responsive">
+													<div id="addressTransparentSpan" style="text-align:left"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="row">
+											<div class="card">
+												<div class="card-header" data-background-color="orange">
+													<h4 class="title">Private Addresses</h4>
+												</div>
+												<div class="card-content table-responsive">
+													<div id="addressPrivateSpan" style="text-align:left"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<button type="button" class="btn btn-sm btn-primary" id="getPrivateKey" onclick="getPrivateKey()">Save All Private Keys To File</button>
+									<button type="button" class="btn btn-sm btn-primary" id="importPrivateKey" onclick="importPrivateKey()">Import Private Key</button>
+
+								</div>
+							</section>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
-					</div>
-                 
-                </div>
-            </div>
-        </div>
-    </div>
 	</div>
-  </body>
+</div>
+</body>
 
-  <!-- Insert this line above script imports  -->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-  <script src="assets/js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="assets/js/datatables.min.js"></script>
-  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="assets/js/bootstrap-notify.min.js"></script>
-  <script type="text/javascript" src="assets/js/perfect-scrollbar.jquery.min.js"></script>
-  <script text="text/javascript" src="assets/js/material-dashboard.js?v=1.2.0"></script>
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="assets/js/datatables.min.js"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="assets/js/perfect-scrollbar.jquery.min.js"></script>
+<script text="text/javascript" src="assets/js/material-dashboard.js?v=1.2.0"></script>
 
-  <!-- Insert this line after script imports -->
-  <script>if (window.module) module = window.module;</script>
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
 
-  <script>
-  
-	function launchZclassicOrg() {
-		var shell = require('electron').shell;
-		event.preventDefault();
-		shell.openExternal('https://zclassic.org/');
-  }
-	
-	function openPage(pageName) {
-		renderer.openPage(pageName);
-  }
+<script>
 
-	const renderer = require('./renderer.js')
-	  
-  function setActiveNav(element) {
-      for (let i = 0; i < document.getElementsByClassName('navLink').length; i++) {
-          document.getElementsByClassName('navLink')[i].parentNode.className = '';
-      }
-      element.parentNode.className += ' active';
-  }
-  /* // TODO: add emoji support
-   function stringToHex(s)
-   {
-   let hex = '';
-   let append = '';
-   for (let i = 0; i < s.length; i++) {
-   let cp = s.codePointAt(i).toString(16);
-   append = '';
-   if (cp.length / 6 !== 1) {
-   for (let n = 0; n < (6 - cp.length); n++) {
-   append += '0';
-   }
-   cp = append + cp;
-   }
-   hex += cp;
-   console.log(hex);
-   }
-   return(hex);
-   }
-   */
-  function stringToHex(s) {
-      let hex = '';
-      let append = '';
-      for (let i = 0; i < s.length; i++) {
-          let cp = s.codePointAt(i).toString(16);
-          append = '';
-          if (cp.length / 2 !== 1) {
-              for (let n = 0; n < (2 - cp.length); n++) {
-                  append += '0';
-              }
-              cp = append + cp;
-          }
-          hex += cp;
-      }
-      return (hex);
-  }
+function launchZclassicOrg() {
+	var shell = require('electron').shell;
+	event.preventDefault();
+	shell.openExternal('https://zclassic.org/');
+}
 
-  /* Unused
-  function hexToString(s) {
-      let str = '';
-      for (let i = 0; i < s.length; i++) {
-          let charCode = parseInt(s[(i * 2)] + s[(i * 2) + 1], 16);
-          str += String.fromCharCode(charCode);
-      }
-      return str;
-  }
-  */
+function openPage(pageName) {
+	renderer.openPage(pageName);
+}
 
-  function transparentReset() {
-      document.getElementById("privateFromSelect").value = "";
-      document.getElementById("transparentSendToValue").value = "";
-      document.getElementById("transparentAmountValue").value = "";
-  }
-  function privateReset() {
-      document.getElementById("privateFromSelect").value = "";
-      document.getElementById("privateSendToValue").value = "";
-      document.getElementById("privateAmountValue").value = "";
-      document.getElementById("privateMemoValue").value = "";
-  }
-	  
-  function copyAddress(address){
-	  var addressType = "transparent";
-	  var aux = document.createElement("input");
-		aux.setAttribute("value", address);
-		document.body.appendChild(aux);
-		aux.select();
-		document.execCommand("copy");
-		document.body.removeChild(aux);
-		
-		if(address.startsWith("z")){
-			addressType = "private";
-		}
-		
-		$.notify({
-      message: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> Your " + addressType + " address has been copied to clipboard:<br/><span style='100px; word-wrap:break-word;'><b>" + address + "</span></b>"
-      },{
-      allow_dismiss: false,
-      type: 'warning',
-      delay:5000
-    });
+const renderer = require('./renderer.js')
+
+function setActiveNav(element) {
+	for (let i = 0; i < document.getElementsByClassName('navLink').length; i++) {
+		document.getElementsByClassName('navLink')[i].parentNode.className = '';
 	}
-	  
-	function importPrivateKey(){
+	element.parentNode.className += ' active';
+}
+/* // TODO: add emoji support
+function stringToHex(s)
+{
+let hex = '';
+let append = '';
+for (let i = 0; i < s.length; i++) {
+let cp = s.codePointAt(i).toString(16);
+append = '';
+if (cp.length / 6 !== 1) {
+for (let n = 0; n < (6 - cp.length); n++) {
+append += '0';
+}
+cp = append + cp;
+}
+hex += cp;
+console.log(hex);
+}
+return(hex);
+}
+*/
+function stringToHex(s) {
+	let hex = '';
+	let append = '';
+	for (let i = 0; i < s.length; i++) {
+		let cp = s.codePointAt(i).toString(16);
+		append = '';
+		if (cp.length / 2 !== 1) {
+			for (let n = 0; n < (2 - cp.length); n++) {
+				append += '0';
+			}
+			cp = append + cp;
+		}
+		hex += cp;
+	}
+	return (hex);
+}
+
+/* Unused
+function hexToString(s) {
+let str = '';
+for (let i = 0; i < s.length; i++) {
+let charCode = parseInt(s[(i * 2)] + s[(i * 2) + 1], 16);
+str += String.fromCharCode(charCode);
+}
+return str;
+}
+*/
+
+function transparentReset() {
+	document.getElementById("privateFromSelect").value = "";
+	document.getElementById("transparentSendToValue").value = "";
+	document.getElementById("transparentAmountValue").value = "";
+}
+function privateReset() {
+	document.getElementById("privateFromSelect").value = "";
+	document.getElementById("privateSendToValue").value = "";
+	document.getElementById("privateAmountValue").value = "";
+	document.getElementById("privateMemoValue").value = "";
+}
+
+function copyAddress(address){
+	var addressType = "transparent";
+	var aux = document.createElement("input");
+	aux.setAttribute("value", address);
+	document.body.appendChild(aux);
+	aux.select();
+	document.execCommand("copy");
+	document.body.removeChild(aux);
+
+	if(address.startsWith("z")){
+		addressType = "private";
+	}
+
+	$.notify({
+		message: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> Your " + addressType + " address has been copied to clipboard:<br/><span style='100px; word-wrap:break-word;'><b>" + address + "</span></b>"
+	},{
+		allow_dismiss: false,
+		type: 'warning',
+		delay:5000
+	});
+}
+
+function importPrivateKey(){
 	var smalltalk = require("smalltalk");
 	smalltalk.prompt('Import Private Key', 'Please Enter Your Private Key', '')
 	.then((value) => {
 		var privateKey = value;
-				if(!privateKey){
-			
+		if(!privateKey){
+
 			$.notify({
-		message: "<i class='fa fa-times-circle-o fa-4x' style='float:right'></i> <h3>No Private Key Received</h3>"
-	},{
-		allow_dismiss: false,
-		delay:5000,
-		type: 'warning'
-});      
+				message: "<i class='fa fa-times-circle-o fa-4x' style='float:right'></i> <h3>No Private Key Received</h3>"
+			},{
+				allow_dismiss: false,
+				delay:5000,
+				type: 'warning'
+			});
 		} else {
 			var res = renderer.generateQuerySync("importprivkey", [privateKey]);
 			if(res.error){
 				var res = renderer.generateQuerySync("z_importkey", [privateKey]);
-					if(res.error){
-						smalltalk
-    .alert('Error', 'Sorry, your private key could not be imported.')
-    .then(() => {
-        console.log('Dismiss');
-    });
-					} else {
-							$.notify({
-	message: "<i class='fa fa- fa-check-square fa-4x' style='float:right'></i> <h3>Your private key was successfully imported</h3>"
-	},{
-	allow_dismiss: false,
-	type: 'success',
-	delay:5000
-});
-					}
-				
+				if(res.error){
+					smalltalk
+					.alert('Error', 'Sorry, your private key could not be imported.')
+					.then(() => {
+						console.log('Dismiss');
+					});
+				} else {
+					$.notify({
+						message: "<i class='fa fa- fa-check-square fa-4x' style='float:right'></i> <h3>Your private key was successfully imported</h3>"
+					},{
+						allow_dismiss: false,
+						type: 'success',
+						delay:5000
+					});
+				}
+
 			} else {
-			
-			$.notify({
-	message: "<i class='fa fa- fa-check-square fa-4x' style='float:right'></i> <h3>Your private key was successfully imported</h3>"
-	},{
-	allow_dismiss: false,
-	type: 'success',
-	delay:5000
-});
+
+				$.notify({
+					message: "<i class='fa fa- fa-check-square fa-4x' style='float:right'></i> <h3>Your private key was successfully imported</h3>"
+				},{
+					allow_dismiss: false,
+					type: 'success',
+					delay:5000
+				});
 			}
-			
+
 		}
 	});
-			
 
 
-	}
-	  
-      function getNewTransparentAddress() {
-          var newTransparentAddress = renderer.generateQuerySync('getnewaddress', []).result;
-		  		  var aux = document.createElement("input");
-		aux.setAttribute("value", newTransparentAddress);
-		document.body.appendChild(aux);
-		aux.select();
-		document.execCommand("copy");
-		document.body.removeChild(aux);
+
+}
+
+function getNewTransparentAddress() {
+	var newTransparentAddress = renderer.generateQuerySync('getnewaddress', []).result;
+	var aux = document.createElement("input");
+	aux.setAttribute("value", newTransparentAddress);
+	document.body.appendChild(aux);
+	aux.select();
+	document.execCommand("copy");
+	document.body.removeChild(aux);
 	$.notify({
 		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Address Created and Copied To Clipboard</strong>",
 		message: newTransparentAddress
 	},{
 		allow_dismiss: false,
-	type: 'warning',
-	delay:5000
-});    
-      }
-      function getNewPrivateAddress() {
-          var newPrivateAddress = renderer.generateQuerySync('z_getnewaddress', []).result;
-		  var aux = document.createElement("input");
-		aux.setAttribute("value", newPrivateAddress);
-		document.body.appendChild(aux);
-		aux.select();
-		document.execCommand("copy");
-		document.body.removeChild(aux);
-				$.notify({
-	title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Address Created and Copied To Clipboard</strong>",
-	message: newPrivateAddress
+		type: 'warning',
+		delay:5000
+	});
+}
+function getNewPrivateAddress() {
+	var newPrivateAddress = renderer.generateQuerySync('z_getnewaddress', []).result;
+	var aux = document.createElement("input");
+	aux.setAttribute("value", newPrivateAddress);
+	document.body.appendChild(aux);
+	aux.select();
+	document.execCommand("copy");
+	document.body.removeChild(aux);
+	$.notify({
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Address Created and Copied To Clipboard</strong>",
+		message: newPrivateAddress
 	},{
 		allow_dismiss: false,
-	type: 'warning',
-	delay:5000
-});    
-  }
+		type: 'warning',
+		delay:5000
+	});
+}
 
-	function copyPrivKey(address){
-		var pKey = renderer.generateQuerySync("dumpprivkey", [address]);
-var aux = document.createElement("input");
-		aux.setAttribute("value", pKey.result);
-		document.body.appendChild(aux);
-		aux.select();
-		document.execCommand("copy");
-		document.body.removeChild(aux);
-				$.notify({
-	title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard</strong>",
-	message: pKey.result
+function copyPrivKey(address){
+	var pKey = renderer.generateQuerySync("dumpprivkey", [address]);
+	var aux = document.createElement("input");
+	aux.setAttribute("value", pKey.result);
+	document.body.appendChild(aux);
+	aux.select();
+	document.execCommand("copy");
+	document.body.removeChild(aux);
+	$.notify({
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard</strong>",
+		message: pKey.result
 	},{
 		allow_dismiss: false,
 		delay:5000,
 		type: 'warning'
-});      
+	});
 }
 
-	function copyZPrivKey(address){
-		var pKey = renderer.generateQuerySync("z_exportkey", [address]);
-var aux = document.createElement("input");
-		aux.setAttribute("value", pKey.result);
-		document.body.appendChild(aux);
-		aux.select();
-		document.execCommand("copy");
-		document.body.removeChild(aux);
-$.notify({
-	title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard</strong>",
-	message: pKey.result
+function copyZPrivKey(address){
+	var pKey = renderer.generateQuerySync("z_exportkey", [address]);
+	var aux = document.createElement("input");
+	aux.setAttribute("value", pKey.result);
+	document.body.appendChild(aux);
+	aux.select();
+	document.execCommand("copy");
+	document.body.removeChild(aux);
+	$.notify({
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>Private Key Copied To Clipboard</strong>",
+		message: pKey.result
 	},{
 		allow_dismiss: false,
 		delay:5000,
 		type: 'warning'
-});      
+	});
 }
 
 
-	
-
-	function getPrivateKey() {
-	    const {dialog} = require("electron").remote;
-		const fs = require('fs');
-
-		var savePath = dialog.showSaveDialog({});
-		
-		var now = new Date();
-		now = now.toISOString().split('.')[0] + 'Z';
-
-		var fileStr = '# Wallet dump created by eleos\r\n';
-		fileStr += '# Created on ' + now + '\r\n\r\n\r\n';
-		fileStr += 'Address                                                                                               Private Key\r\n\r\n'
-
-		var res = renderer.generateQuerySync("z_listaddresses", []).result;
-		res.forEach(function(key) {
-			var pKey = renderer.generateQuerySync("z_exportkey", [key]);
-			fileStr += key + '   :   ' + pKey.result + '\r\n';
-		});
-		
-		fileStr += '\r\n\r\n';
-		
-		var res = renderer.generateQuerySync("listreceivedbyaddress", [0, true]).result;
-		console.log(res);
-		res.forEach(function(key) {
-			var pKey = renderer.generateQuerySync("dumpprivkey", [key.address]);
-			fileStr += key.address + '                                                               :   ' + pKey.result + '\r\n';
-		});
-
-		fs.writeFile(savePath, fileStr, function(err) {
-			console.log(err);
-		});
-    }
-	  
-      function sendTransparentTransaction() {
-          let sendTo = document.getElementById("transparentSendToValue").value;
-          let amount = document.getElementById("transparentAmountValue").value;
-          let tx = {};
-          tx[sendTo] = Number(amount);
-          renderer.generateQuery('sendmany', ["", tx]);
-          document.getElementById("transparentResetButton").click();
-      }
-      function sendPrivateTransaction() {
-          let from = document.getElementById("privateFromSelect").value;
-          let address = document.getElementById("privateSendToValue").value;
-          let amount = Number(document.getElementById("privateAmountValue").value);
-		  
-          if (document.getElementById("privateMemoValue").value.length === 0) {
-              let arg = renderer.generateQuerySync('z_sendmany', [from, [{'address': address, 'amount': amount}]]);
-			  if (arg.result === null) {
-			  				$.notify({
-			message: arg.error.message
-				},{
-			allow_dismiss: false,
-			type: 'danger'
-			}); 
-			  } else {
-			  				$.notify({
-	message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent..<br/>TXID: " + arg.result
-	},{
-		allow_dismiss: false,
-	type: 'warning'
-});
-				document.getElementById("privateResetButton").click();
-			  }
-          }
-          else {
-              let memo = stringToHex(document.getElementById("privateMemoValue").value);
-              let arg = renderer.generateQuery('z_sendmany', [from, [{'address': address, 'amount': amount, 'memo': memo}]]);
-			  if (arg.result === null) {
-			  				$.notify({
-			message: arg.error.message
-	},{
-		allow_dismiss: false,
-		type: 'danger'
-}); 
-			  } else {
-			  $.notify({
-	message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent.<br/>TXID: " + arg.result
-	},{
-		allow_dismiss: false,
-	type: 'warning'
-});
-				document.getElementById("privateResetButton").click();
-			  }
-          }
-          
-      }
 
 
-	  function openTX(txid){
-		var shell = require('electron').shell;
-		event.preventDefault();
-		shell.openExternal("http://explorer.zclmine.pro/tx/" + txid);
+function getPrivateKey() {
+	const {dialog} = require("electron").remote;
+	const fs = require('fs');
+
+	var savePath = dialog.showSaveDialog({});
+
+	var now = new Date();
+	now = now.toISOString().split('.')[0] + 'Z';
+
+	var fileStr = '# Wallet dump created by eleos\r\n';
+	fileStr += '# Created on ' + now + '\r\n\r\n\r\n';
+	fileStr += 'Address                                                                                               Private Key\r\n\r\n'
+
+	var res = renderer.generateQuerySync("z_listaddresses", []).result;
+	res.forEach(function(key) {
+		var pKey = renderer.generateQuerySync("z_exportkey", [key]);
+		fileStr += key + '   :   ' + pKey.result + '\r\n';
+	});
+
+	fileStr += '\r\n\r\n';
+
+	var res = renderer.generateQuerySync("listreceivedbyaddress", [0, true]).result;
+	console.log(res);
+	res.forEach(function(key) {
+		var pKey = renderer.generateQuerySync("dumpprivkey", [key.address]);
+		fileStr += key.address + '                                                               :   ' + pKey.result + '\r\n';
+	});
+
+	fs.writeFile(savePath, fileStr, function(err) {
+		console.log(err);
+	});
 }
-	  
-	  function getFiatValue(){
-	
-		var xmlhttp = new XMLHttpRequest();
-var url = 'https://api.coinmarketcap.com/v1/ticker/zclassic';
 
+function sendTransparentTransaction() {
+	let sendTo = document.getElementById("transparentSendToValue").value;
+	let amount = document.getElementById("transparentAmountValue").value;
+	let tx = {};
+	tx[sendTo] = Number(amount);
+	renderer.generateQuery('sendmany', ["", tx]);
+	document.getElementById("transparentResetButton").click();
+}
+function sendPrivateTransaction() {
+	let from = document.getElementById("privateFromSelect").value;
+	let address = document.getElementById("privateSendToValue").value;
+	let amount = Number(document.getElementById("privateAmountValue").value);
 
-xmlhttp.onreadystatechange = function() {
-if (this.readyState == 4 && this.status == 200) {
-    var myArr = JSON.parse(this.responseText);
-	var usd = myArr[0].price_usd;
-		var coinBalance = document.getElementById("currentBalanceValue").innerHTML;
-		
-	    document.getElementById("USDPrice").innerHTML = "$" + parseFloat(usd).toFixed(2);
-		document.getElementById("fiatBalance").innerHTML = "$" + (usd * coinBalance).toFixed(2);
-		
-    } else {
-	
-			    document.getElementById("USDPrice").innerHTML = "$0";
-		document.getElementById("fiatBalance").innerHTML = "$0";
-	
+	if (document.getElementById("privateMemoValue").value.length === 0) {
+		let arg = renderer.generateQuerySync('z_sendmany', [from, [{'address': address, 'amount': amount}]]);
+		if (arg.result === null) {
+			$.notify({
+				message: arg.error.message
+			},{
+				allow_dismiss: false,
+				type: 'danger'
+			});
+		} else {
+			$.notify({
+				message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent..<br/>TXID: " + arg.result
+			},{
+				allow_dismiss: false,
+				type: 'warning'
+			});
+			document.getElementById("privateResetButton").click();
+		}
 	}
-};
+	else {
+		let memo = stringToHex(document.getElementById("privateMemoValue").value);
+		let arg = renderer.generateQuery('z_sendmany', [from, [{'address': address, 'amount': amount, 'memo': memo}]]);
+		if (arg.result === null) {
+			$.notify({
+				message: arg.error.message
+			},{
+				allow_dismiss: false,
+				type: 'danger'
+			});
+		} else {
+			$.notify({
+				message: "<i class='fa fa-exchange fa-3x' style='float:right'></i> Transaction Sent.<br/>TXID: " + arg.result
+			},{
+				allow_dismiss: false,
+				type: 'warning'
+			});
+			document.getElementById("privateResetButton").click();
+		}
+	}
 
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+}
+
+
+function openTX(txid){
+	var shell = require('electron').shell;
+	event.preventDefault();
+	shell.openExternal("http://explorer.zclmine.pro/tx/" + txid);
+}
+
+function getFiatValue(){
+
+	var xmlhttp = new XMLHttpRequest();
+	var url = 'https://api.coinmarketcap.com/v1/ticker/zclassic';
+
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var myArr = JSON.parse(this.responseText);
+			var usd = myArr[0].price_usd;
+			var coinBalance = document.getElementById("currentBalanceValue").innerHTML;
+
+			document.getElementById("USDPrice").innerHTML = "$" + parseFloat(usd).toFixed(2);
+			document.getElementById("fiatBalance").innerHTML = "$" + (usd * coinBalance).toFixed(2);
+
+		} else {
+
+			document.getElementById("USDPrice").innerHTML = "$0";
+			document.getElementById("fiatBalance").innerHTML = "$0";
+
+		}
+	};
+
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
 
 }
 
 getFiatValue();
 setInterval(getFiatValue, 30000);
 
-  </script>
+</script>
 
 
 
