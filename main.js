@@ -357,7 +357,13 @@ function createWindow() {
                     click() {
                         let pjs = require("./package.json");
                         console.log("Version: " + pjs.version);
-                        let message = ["Version: ", pjs.version, "\nMade by The ZClassic Team"].join(' ')
+                        let message = ["Version: ",
+                        pjs.version,
+                        "\nMade by The ZClassic Team",
+                        "\nDonation Addresses:",
+                        "\nT: t1gsePJZ6ojJYygj3PWMGJfojPUoMd5AVfU",
+                        "\nZ: zcfocnwd5EuQb5SkECzyKqaWAizXA9pfBqd6i9BRXcUYXFxCTRcrkU7Sc9nfFs3Te1FneGEkiSsL1mWtFW4dDH9mnpC2nSt",
+                        "\n\nSend us a memo ;)"].join('')
                         dialog.showMessageBox(null, {
                             type: "info",
                             title: "About Eleos for Zclassic",

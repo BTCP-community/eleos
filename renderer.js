@@ -443,7 +443,7 @@ ipcRenderer.on("jsonQuery-reply", (event, arg) => {
 
     for (let i = 0; i < byAmount.length; i++) {
       let res = generateQuerySync("z_getbalance", [byAmount[i], 0]);
-      table[ctr] = {'Z Address <a href="#" data-toggle="tooltip" data-placement="top" title="New Shielded (Z) Address" onclick="getNewPrivateAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': '<div class="truncate-ellipsis"><span>' + byAmount[i] + '</span></div>', '<p class="text-center">Amount</p>': '<p class="text-center">' + res.result + '</p>','<p class="text-center">Actions</p>':'<div class="text-center"><a href="#" title="Copy Address To Clipboard" onclick="copyAddress(\'' + byAmount[i] + '\')"><i class="fa fa-clipboard" style="color:#c87035"></i></a>&nbsp;&nbsp;<a href="#" title="Export Private Key" onclick="copyZPrivKey(\'' + byAmount[i] + '\')"><i class="fa fa-download" style="color:#c87035"></i></div>'};
+      table[ctr] = {'Z Addresses <a href="#" data-toggle="tooltip" data-placement="top" title="New Shielded (Z) Address" onclick="getNewPrivateAddress()">&nbsp;<i class="fa fa-plus-circle" style="color:green"></i></a>': '<div class="truncate-ellipsis"><span>' + byAmount[i] + '</span></div>', '<p class="text-center">Amount</p>': '<p class="text-center">' + res.result + '</p>','<p class="text-center">Actions</p>':'<div class="text-center"><a href="#" title="Copy Address To Clipboard" onclick="copyAddress(\'' + byAmount[i] + '\')"><i class="fa fa-clipboard" style="color:#c87035"></i></a>&nbsp;&nbsp;<a href="#" title="Export Private Key" onclick="copyZPrivKey(\'' + byAmount[i] + '\')"><i class="fa fa-download" style="color:#c87035"></i></div>'};
       ctr += 1;
       if (res.result > 0) {
         let option = document.createElement("option");
