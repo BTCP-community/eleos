@@ -395,7 +395,7 @@ function getNewTransparentAddress() {
 	document.execCommand("copy");
 	document.body.removeChild(aux);
 	$.notify({
-		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>New T Address and Key Generated! Copied To Clipboard.</strong>",
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>New T Address and Key Generated! Address on Clipboard.</strong>",
 		message: newTransparentAddress
 	},{
 		allow_dismiss: false,
@@ -412,7 +412,7 @@ function getNewPrivateAddress() {
 	document.execCommand("copy");
 	document.body.removeChild(aux);
 	$.notify({
-		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>New Z Address and Key Generated! Copied To Clipboard.</strong>",
+		title: "<i class='fa fa-clipboard fa-3x' style='float:right'></i> <strong>New Z Address and Key Generated! Address on Clipboard.</strong>",
 		message: newPrivateAddress
 	},{
 		allow_dismiss: false,

@@ -352,14 +352,15 @@ function createWindow() {
                 },
 				{type: "separator"},
                 {
-                    label: "Show version",
+                    label: "About",
                     click() {
                         let pjs = require("./package.json");
                         console.log("Version: " + pjs.version);
+                        let message = ["Version: ", pjs.version, "\nMade by The ZClassic Team"].join(' ')
                         dialog.showMessageBox(null, {
                             type: "info",
-                            title: "Eleos Version",
-                            message: "Version: " + pjs.version
+                            title: "About Eleos for Zclassic",
+                            message: message 
                         });
                     }
                 },
